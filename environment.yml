@@ -253,7 +253,6 @@ dependencies:
       - akro==0.0.8
       - ale-py==0.8.1
       - anyio==4.5.2
-      - assistive-gym==1.0
       - astunparse==1.6.3
       - blessed==1.20.0
       - cachetools==4.2.4
