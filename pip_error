@@ -1,0 +1,8 @@
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+openai 1.51.2 requires typing-extensions<5,>=4.11, but you have typing-extensions 4.5.0 which is incompatible.
+pydantic 2.9.2 requires typing-extensions>=4.6.1; python_version < "3.13", but you have typing-extensions 4.5.0 which is incompatible.
+pydantic-core 2.23.4 requires typing-extensions!=4.7.0,>=4.6.0, but you have typing-extensions 4.5.0 which is incompatible.
+typeguard 4.2.1 requires typing-extensions>=4.10.0; python_version < "3.13", but you have typing-extensions 4.5.0 which is incompatible.
+assistive-gym 1.0 requires gym==0.15.7, but you have gym 0.26.2 which is incompatible.
+assistive-gym 1.0 requires tensorflow-probability==0.7.0, but you have tensorflow-probability 0.21.0 which is incompatible.
+
