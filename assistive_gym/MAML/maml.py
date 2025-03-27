@@ -1,14 +1,28 @@
 import os
 import torch
+from garage import wrap_experiment
 from garage.envs import GymEnv, normalize
 from garage.experiment import MetaEvaluator, SnapshotConfig
 from garage.experiment.task_sampler import ConstructEnvsSampler
+from garage.experiment.deterministic import set_seed
 from garage.sampler import LocalSampler
 from garage.torch.algos import MAMLPPO
 from garage.torch.policies import GaussianMLPPolicy
 from garage.torch.value_functions import GaussianMLPValueFunction
 from garage.trainer import Trainer
 from garage.torch import set_gpu_mode
+
+@wrap_experiment(snapshot_mode='all')
+def maml_trainer(ctxt, 
+                 env_classes, 
+                 seed=1, 
+                 epochs=300, 
+                 episodes_per_task=40, 
+                 meta_batch_size=20):
+    set_seed(seed)
+
+
+
 
 class MAMLTrainer:
     def __init__(self, env_classes, seed=1, epochs=300, episodes_per_task=40, meta_batch_size=20):

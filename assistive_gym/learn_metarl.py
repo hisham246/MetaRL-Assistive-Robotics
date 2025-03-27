@@ -1,6 +1,5 @@
 import numpy as np
 import torch
-from torch.optim import Adam
 import gym
 import importlib
 
@@ -12,7 +11,7 @@ import hydra
 from omegaconf import DictConfig, OmegaConf
 
 # Meta-Learning
-from assistive_gym.MAML.maml import MAMLTrainer
+from assistive_gym.MAML.maml import maml_trainer
 from assistive_gym.PEARL.pearl import pearl_trainer
 from assistive_gym.RL2.rl2 import rl2_trainer
 
@@ -37,16 +36,13 @@ def train_maml(args: DictConfig):
     envs = [make_env(args, env_name, coop=('Human' in env_name)) for env_name in env_classes]
 
     # Initialize MAML
-    maml = MAMLTrainer(
+    maml_trainer(
         env_classes=envs,
         seed=args.seed,
         epochs=args.MAML.epochs,
         episodes_per_task=args.MAML.episodes_per_task,
         meta_batch_size=args.MAML.meta_batch_size
     )
-
-    # Train the MAML model
-    maml.train()
 
 def train_pearl(args: DictConfig):
     # Define your environment classes

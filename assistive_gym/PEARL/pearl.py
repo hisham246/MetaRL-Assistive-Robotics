@@ -13,7 +13,7 @@ from garage.torch.policies import (ContextConditionedPolicy,
 from garage.torch.q_functions import ContinuousMLPQFunction
 from garage.trainer import Trainer
 
-@wrap_experiment
+@wrap_experiment(snapshot_mode='all')
 def pearl_trainer(ctxt, 
                   env_classes,
                   seed=1, 

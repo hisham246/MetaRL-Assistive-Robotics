@@ -8,14 +8,33 @@ from garage.tf.algos import RL2PPO
 from garage.tf.algos.rl2 import RL2Env, RL2Worker
 from garage.tf.policies import GaussianGRUPolicy
 from garage.trainer import TFTrainer
+import pickle
+import os
+import re
 
-@wrap_experiment(snapshot_mode='all')
+def get_latest_experiment_dir(base_path='data/local/experiment', prefix='rl2_trainer'):
+    candidates = []
+    for name in os.listdir(base_path):
+        if name == prefix:
+            candidates.append((0, name))
+        else:
+            match = re.fullmatch(f'{prefix}_(\d+)', name)
+            if match:
+                candidates.append((int(match.group(1)), name))
+    if not candidates:
+        raise FileNotFoundError(f"No '{prefix}' experiments found in {base_path}")
+    
+    latest = max(candidates)[1]
+    return os.path.join(base_path, latest)
+
+    
+@wrap_experiment(snapshot_mode='none')
 def rl2_trainer(ctxt,
                 env_classes,
                 seed=1,
-                max_episode_length=100,
+                max_episode_length=2,
                 meta_batch_size=2,
-                n_epochs=10,
+                n_epochs=2,
                 episode_per_task=4):
     
     set_seed(seed)
@@ -71,3 +90,11 @@ def rl2_trainer(ctxt,
         trainer.train(n_epochs=n_epochs,
                       batch_size=episode_per_task * max_episode_length * meta_batch_size,
                       store_episodes=True)
+
+        # Save policy
+        params = policy.__getstate__()
+        target_dir = get_latest_experiment_dir()
+        os.makedirs(target_dir, exist_ok=True)
+
+        with open(os.path.join(target_dir, 'rl2_policy.pkl'), 'wb') as f:
+            pickle.dump(params, f)

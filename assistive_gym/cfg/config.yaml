@@ -17,19 +17,19 @@ MAML:
 
 # PEARL
 PEARL:
-  epochs: 100
+  epochs: 2
   num_train_tasks: 2
   num_test_tasks: 2
   latent_size: 5
   encoder_hidden_size: 200
   net_size: 300
   meta_batch_size: 16
-  num_steps_per_epoch: 2000
-  num_initial_steps: 2000
+  num_steps_per_epoch: 100
+  num_initial_steps: 100
   num_tasks_sample: 5
   num_steps_prior: 400
   num_extra_rl_steps_posterior: 600
-  pearl_batch_size: 256
+  pearl_batch_size: 64
   embedding_batch_size: 100
   embedding_mini_batch_size: 100
   max_episode_length: 200
@@ -38,7 +38,9 @@ PEARL:
 
 # RL2
 RL2:
-  max_episode_length: 100
+  # max_episode_length: 100
+  max_episode_length: 2
   meta_batch_size: 2
-  n_epochs: 10
+  # n_epochs: 10
+  n_epochs: 2
   episode_per_task: 4
