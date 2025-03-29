@@ -4,16 +4,15 @@ defaults:
   - _self_
 
 # algo: PEARL
-algo: RL2
+algo: MAML
 envs: FeedingSawyer-v1,DrinkingSawyer-v1
 seed: 1
 
 MAML:
   epochs: 200
-  episodes_per_task: 100
-  meta_batch_size: 10
-  inner_lr: 0.1
-  num_grad_updates: 1
+  episodes_per_task: 20
+  meta_batch_size: 2
+  max_episode_length: 200
 
 # PEARL
 PEARL:
