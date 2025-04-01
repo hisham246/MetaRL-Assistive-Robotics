@@ -47,7 +47,7 @@ def rl2_trainer(ctxt,
         task_updates = task_sampler.sample(meta_batch_size)
 
         envs = [update() for update in task_updates]
-        env_spec = envs[0].spec
+        env_spec = task_updates[0]().spec
 
         policy = GaussianGRUPolicy(name='policy',
                                    hidden_dim=64,

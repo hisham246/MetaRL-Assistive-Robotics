@@ -63,4 +63,4 @@ def maml_trainer(ctxt,
 
     trainer.train(n_epochs=epochs, 
                   batch_size=episodes_per_task * env.spec.max_episode_length, 
-                  store_episodes=True)
+                  store_episodes=True, plot=True)

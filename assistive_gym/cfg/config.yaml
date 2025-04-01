@@ -3,43 +3,42 @@
 defaults:
   - _self_
 
-# algo: PEARL
-algo: MAML
-envs: FeedingSawyer-v1,DrinkingSawyer-v1
+algo: RL2
+# envs: FeedingSawyer-v1,DrinkingSawyer-v1
+envs: ScratchItchSawyer-v1,BedBathingSawyer-v1,ArmManipulationSawyer-v1,DressingSawyer-v1
 seed: 1
 
+# MAML
 MAML:
-  epochs: 200
-  episodes_per_task: 20
+  epochs: 300
+  episodes_per_task: 40
   meta_batch_size: 2
-  max_episode_length: 200
+  max_episode_length: 100
 
 # PEARL
 PEARL:
-  epochs: 2
-  num_train_tasks: 2
-  num_test_tasks: 2
-  latent_size: 5
+  epochs: 500
+  num_train_tasks: 3
+  num_test_tasks: 1
+  latent_size: 7
   encoder_hidden_size: 200
   net_size: 300
   meta_batch_size: 16
-  num_steps_per_epoch: 100
-  num_initial_steps: 100
-  num_tasks_sample: 5
-  num_steps_prior: 400
-  num_extra_rl_steps_posterior: 600
+  num_steps_per_epoch: 5000
+  num_initial_steps: 5000
+  num_tasks_sample: 1
+  num_steps_prior: 750
+  num_extra_rl_steps_posterior: 750
   pearl_batch_size: 64
-  embedding_batch_size: 100
-  embedding_mini_batch_size: 100
-  max_episode_length: 200
-  reward_scale: 5.0
+  embedding_batch_size: 64
+  embedding_mini_batch_size: 64
+  max_episode_length: 100
+  reward_scale: 10.0
   use_gpu: True
 
 # RL2
 RL2:
-  # max_episode_length: 100
-  max_episode_length: 2
+  max_episode_length: 100
   meta_batch_size: 2
-  # n_epochs: 10
-  n_epochs: 2
-  episode_per_task: 4
+  n_epochs: 500
+  episode_per_task: 50

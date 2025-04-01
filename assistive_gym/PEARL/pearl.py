@@ -104,5 +104,4 @@ def pearl_trainer(ctxt,
 
     trainer.setup(algo=pearl,
                   env=env)
-
-    trainer.train(n_epochs=num_epochs, batch_size=batch_size, store_episodes=True)
+    trainer = trainer.train(n_epochs=num_epochs, batch_size=batch_size, store_episodes=True)

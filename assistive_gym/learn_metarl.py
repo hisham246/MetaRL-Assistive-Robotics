@@ -4,11 +4,10 @@ import gym
 import importlib
 
 # tracing experiments
-import wandb
-import random
+from dowel import tabular
 
 import hydra
-from omegaconf import DictConfig, OmegaConf
+from omegaconf import DictConfig
 
 # Meta-Learning
 from assistive_gym.MAML.maml import maml_trainer
