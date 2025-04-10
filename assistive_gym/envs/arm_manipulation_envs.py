@@ -16,27 +16,33 @@ human_controllable_joint_indices = human.right_arm_joints
 class ArmManipulationPR2Env(ArmManipulationEnv):
     def __init__(self):
         super(ArmManipulationPR2Env, self).__init__(robot=PR2(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "ArmManipulationPR2Env"
 class ArmManipulationBaxterEnv(ArmManipulationEnv):
     def __init__(self):
         super(ArmManipulationBaxterEnv, self).__init__(robot=Baxter(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "ArmManipulationBaxterEnv"
 class ArmManipulationSawyerEnv(ArmManipulationEnv):
     def __init__(self):
         super(ArmManipulationSawyerEnv, self).__init__(robot=Sawyer(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "ArmManipulationSawyerEnv"
 class ArmManipulationJacoEnv(ArmManipulationEnv):
     def __init__(self):
         super(ArmManipulationJacoEnv, self).__init__(robot=Jaco(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "ArmManipulationJacoEnv"
 class ArmManipulationStretchEnv(ArmManipulationEnv):
     def __init__(self):
         super(ArmManipulationStretchEnv, self).__init__(robot=Stretch('wheel_'+robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "ArmManipulationStretchEnv"
 class ArmManipulationPandaEnv(ArmManipulationEnv):
     def __init__(self):
         super(ArmManipulationPandaEnv, self).__init__(robot=Panda(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "ArmManipulationPandaEnv"
 class ArmManipulationTIAGoEnv(ArmManipulationEnv):
     def __init__(self):
         super(ArmManipulationTIAGoEnv, self).__init__(robot=TIAGo(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))

@@ -3,12 +3,13 @@
 defaults:
   - _self_
 
-algo: RL2
-# envs: FeedingSawyer-v1,DrinkingSawyer-v1
-envs: ScratchItchSawyer-v1,BedBathingSawyer-v1,ArmManipulationSawyer-v1,DressingSawyer-v1
+algo: PEARL
+# algo: RL2
+# algo: MAML
+# envs: ScratchItchSawyer-v1,BedBathingSawyer-v1,ArmManipulationSawyer-v1
+envs: ScratchItchSawyer-v1,ScratchItchJaco-v1,ScratchItchPR2-v1,ScratchItchPanda-v1,ScratchItchBaxter-v1
 seed: 1
 
-# MAML
 MAML:
   epochs: 300
   episodes_per_task: 40

@@ -18,31 +18,36 @@ human_controllable_joint_indices = human.right_arm_joints
 class ScratchItchPR2Env(ScratchItchEnv):
     def __init__(self):
         super(ScratchItchPR2Env, self).__init__(robot=PR2(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "ScratchItchPR2Env"
 class ScratchItchBaxterEnv(ScratchItchEnv):
     def __init__(self):
         super(ScratchItchBaxterEnv, self).__init__(robot=Baxter(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "ScratchItchBaxterEnv"
 class ScratchItchSawyerEnv(ScratchItchEnv):
     def __init__(self):
         super(ScratchItchSawyerEnv, self).__init__(robot=Sawyer(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "ScratchItchSawyerEnv"
 class ScratchItchJacoEnv(ScratchItchEnv):
     def __init__(self):
         super(ScratchItchJacoEnv, self).__init__(robot=Jaco(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "ScratchItchJacoEnv"
 class ScratchItchStretchEnv(ScratchItchEnv):
     def __init__(self):
         super(ScratchItchStretchEnv, self).__init__(robot=Stretch('wheel_'+robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "ScratchItchStretchEnv"
 class ScratchItchPandaEnv(ScratchItchEnv):
     def __init__(self):
         super(ScratchItchPandaEnv, self).__init__(robot=Panda(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "ScratchItchPandaEnv"
 class ScratchItchTIAGoEnv(ScratchItchEnv):
     def __init__(self):
         super(ScratchItchTIAGoEnv, self).__init__(robot=TIAGo(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
 class ScratchItchPR2HumanEnv(ScratchItchEnv, MultiAgentEnv):
     def __init__(self):
         super(ScratchItchPR2HumanEnv, self).__init__(robot=PR2(robot_arm), human=Human(human_controllable_joint_indices, controllable=True))

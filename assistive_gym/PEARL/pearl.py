@@ -51,7 +51,9 @@ def pearl_trainer(ctxt,
     env_instances = [update() for update in task_updates]
 
 
-    env = MultiEnvWrapper(env_instances, sample_strategy=round_robin_strategy, mode='vanilla')
+    env = MultiEnvWrapper(env_instances, 
+                          sample_strategy=round_robin_strategy, 
+                          mode='vanilla')
 
     trainer = Trainer(ctxt)
 
@@ -72,7 +74,7 @@ def pearl_trainer(ctxt,
     sampler = LocalSampler(agents=None,
                            envs=env_instances,
                            max_episode_length=max_episode_length,
-                           n_workers=2,
+                           n_workers=len(env_instances),
                            worker_class=PEARLWorker)
     
 

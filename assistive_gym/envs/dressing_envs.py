@@ -16,27 +16,33 @@ human_controllable_joint_indices = human.left_arm_joints
 class DressingPR2Env(DressingEnv):
     def __init__(self):
         super(DressingPR2Env, self).__init__(robot=PR2(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "DressingPandaEnv"
 class DressingBaxterEnv(DressingEnv):
     def __init__(self):
         super(DressingBaxterEnv, self).__init__(robot=Baxter(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "DressingBaxterEnv"
 class DressingSawyerEnv(DressingEnv):
     def __init__(self):
         super(DressingSawyerEnv, self).__init__(robot=Sawyer(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "DressingSawyerEnv"
 class DressingJacoEnv(DressingEnv):
     def __init__(self):
         super(DressingJacoEnv, self).__init__(robot=Jaco(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "DressingJacoEnv"
 class DressingStretchEnv(DressingEnv):
     def __init__(self):
         super(DressingStretchEnv, self).__init__(robot=Stretch('wheel_'+robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "DressingStretchEnv"
 class DressingPandaEnv(DressingEnv):
     def __init__(self):
         super(DressingPandaEnv, self).__init__(robot=Panda(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "DressingPandaEnv"
 class DressingTIAGoEnv(DressingEnv):
     def __init__(self):
         super(DressingTIAGoEnv, self).__init__(robot=TIAGo(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))

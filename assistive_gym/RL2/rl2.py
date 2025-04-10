@@ -31,18 +31,18 @@ def get_latest_experiment_dir(base_path='data/local/experiment', prefix='rl2_tra
 @wrap_experiment(snapshot_mode='none')
 def rl2_trainer(ctxt,
                 env_classes,
-                seed=1,
-                max_episode_length=2,
-                meta_batch_size=2,
-                n_epochs=2,
-                episode_per_task=4):
+                seed,
+                max_episode_length,
+                meta_batch_size,
+                n_epochs,
+                episode_per_task):
     
     set_seed(seed)
     
     with TFTrainer(snapshot_config=ctxt) as trainer:
 
         envs_list = [lambda env=env: RL2Env(GymEnv(env, max_episode_length=max_episode_length)) for env in env_classes]
-        
+
         task_sampler = ConstructEnvsSampler(envs_list)
         task_updates = task_sampler.sample(meta_batch_size)
 

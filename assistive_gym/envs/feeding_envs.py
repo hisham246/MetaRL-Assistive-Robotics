@@ -18,27 +18,33 @@ human_controllable_joint_indices = human.head_joints
 class FeedingPR2Env(FeedingEnv):
     def __init__(self):
         super(FeedingPR2Env, self).__init__(robot=PR2(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "FeedingPR2Env"
 class FeedingBaxterEnv(FeedingEnv):
     def __init__(self):
         super(FeedingBaxterEnv, self).__init__(robot=Baxter(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "FeedingBaxterEnv"
 class FeedingSawyerEnv(FeedingEnv):
     def __init__(self):
         super(FeedingSawyerEnv, self).__init__(robot=Sawyer(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "FeedingSawyerEnv"
 class FeedingJacoEnv(FeedingEnv):
     def __init__(self):
         super(FeedingJacoEnv, self).__init__(robot=Jaco(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "FeedingJacoEnv"
 class FeedingStretchEnv(FeedingEnv):
     def __init__(self):
         super(FeedingStretchEnv, self).__init__(robot=Stretch('wheel_'+robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "FeedingStretchEnv"
 class FeedingPandaEnv(FeedingEnv):
     def __init__(self):
         super(FeedingPandaEnv, self).__init__(robot=Panda(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "FeedingPandaEnv"
 class FeedingTIAGoEnv(FeedingEnv):
     def __init__(self):
         super(FeedingTIAGoEnv, self).__init__(robot=TIAGo(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))

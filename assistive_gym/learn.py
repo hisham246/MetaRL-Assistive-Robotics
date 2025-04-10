@@ -10,7 +10,7 @@ def setup_config(env, algo, coop=False, seed=0, extra_configs={}):
     num_processes = multiprocessing.cpu_count()
     if algo == 'ppo':
         config = ppo.DEFAULT_CONFIG.copy()
-        config['train_batch_size'] = 19200
+        config['train_batch_size'] = 64
         config['num_sgd_iter'] = 50
         config['sgd_minibatch_size'] = 128
         config['lambda'] = 0.95

@@ -16,31 +16,36 @@ human_controllable_joint_indices = human.head_joints
 class DrinkingPR2Env(DrinkingEnv):
     def __init__(self):
         super(DrinkingPR2Env, self).__init__(robot=PR2(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "DrinkingPR2Env"
 class DrinkingBaxterEnv(DrinkingEnv):
     def __init__(self):
         super(DrinkingBaxterEnv, self).__init__(robot=Baxter(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "DrinkingBaxterEnv"
 class DrinkingSawyerEnv(DrinkingEnv):
     def __init__(self):
         super(DrinkingSawyerEnv, self).__init__(robot=Sawyer(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "DrinkingSawyerEnv"
 class DrinkingJacoEnv(DrinkingEnv):
     def __init__(self):
         super(DrinkingJacoEnv, self).__init__(robot=Jaco(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "DrinkingJacoEnv"
 class DrinkingStretchEnv(DrinkingEnv):
     def __init__(self):
         super(DrinkingStretchEnv, self).__init__(robot=Stretch('wheel_'+robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "DrinkingStretchEnv"
 class DrinkingPandaEnv(DrinkingEnv):
     def __init__(self):
         super(DrinkingPandaEnv, self).__init__(robot=Panda(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
+    def __repr__(self):
+        return "DrinkingPandaEnv"
 class DrinkingTIAGoEnv(DrinkingEnv):
     def __init__(self):
         super(DrinkingTIAGoEnv, self).__init__(robot=TIAGo(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
-
 class DrinkingPR2HumanEnv(DrinkingEnv, MultiAgentEnv):
     def __init__(self):
         super(DrinkingPR2HumanEnv, self).__init__(robot=PR2(robot_arm), human=Human(human_controllable_joint_indices, controllable=True))
