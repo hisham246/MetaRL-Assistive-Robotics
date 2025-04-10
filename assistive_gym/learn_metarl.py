@@ -46,8 +46,7 @@ def train_maml(args: DictConfig):
 def train_pearl(args: DictConfig):
     # Define your environment classes
     env_classes = args.envs.split(',')
-    envs = [(env_name, make_env(args, env_name, coop=('Human' in env_name))) for env_name in env_classes]
-    print(envs)
+    envs = [make_env(args, env_name, coop=('Human' in env_name)) for env_name in env_classes]
 
     # Initialize PEARL
     pearl_trainer(env_classes=envs,

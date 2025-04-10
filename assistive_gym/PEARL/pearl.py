@@ -13,6 +13,17 @@ from garage.torch.policies import (ContextConditionedPolicy,
 from garage.torch.q_functions import ContinuousMLPQFunction
 from garage.trainer import Trainer
 
+class NamedEnv:
+    def __init__(self, env_fn, name):
+        self._env_fn = env_fn
+        self.name = name
+
+    def __call__(self):
+        env = self._env_fn()
+        env.env_name = self.name
+        return env
+
+
 @wrap_experiment(snapshot_mode='all')
 def pearl_trainer(ctxt, 
                   env_classes,
@@ -40,20 +51,30 @@ def pearl_trainer(ctxt,
     encoder_hidden_sizes = (encoder_hidden_size, encoder_hidden_size, encoder_hidden_size)
 
     # List environments
-    envs_list = [lambda: normalize(GymEnv(env, max_episode_length=max_episode_length)) for env in env_classes]
+    # envs_list = [lambda: normalize(GymEnv(env, max_episode_length=max_episode_length)) for env in env_classes]
+    envs_list = [NamedEnv(lambda env=env: normalize(GymEnv(env, max_episode_length=max_episode_length)), env.__class__.__name__) for env in env_classes]
 
     # Set up task sampler
-    task_sampler = ConstructEnvsSampler(envs_list)
+    # task_sampler = ConstructEnvsSampler(envs_list)
 
+    # task_updates = task_sampler.sample(num_train_tasks)
+
+    # env_callables = [update for update in task_updates]
+    # env_instances = [update() for update in task_updates]
+    # env_names = [env.__repr__() for env in env_callables]
+
+    task_sampler = ConstructEnvsSampler([named_env for named_env in envs_list])
     task_updates = task_sampler.sample(num_train_tasks)
 
     env_callables = [update for update in task_updates]
     env_instances = [update() for update in task_updates]
-
+    env_names = [env.__repr__() for env in env_instances]
+    print("------Names------\n")
+    print(env_names)
 
     env = MultiEnvWrapper(env_instances, 
                           sample_strategy=round_robin_strategy, 
-                          mode='vanilla')
+                          mode='vanilla', env_names=env_names)
 
     trainer = Trainer(ctxt)
 

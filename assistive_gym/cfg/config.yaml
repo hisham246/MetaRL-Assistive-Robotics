@@ -18,15 +18,15 @@ MAML:
 
 # PEARL
 PEARL:
-  epochs: 500
+  epochs: 2
   num_train_tasks: 3
   num_test_tasks: 1
   latent_size: 7
   encoder_hidden_size: 200
   net_size: 300
   meta_batch_size: 16
-  num_steps_per_epoch: 5000
-  num_initial_steps: 5000
+  num_steps_per_epoch: 50
+  num_initial_steps: 50
   num_tasks_sample: 1
   num_steps_prior: 750
   num_extra_rl_steps_posterior: 750
