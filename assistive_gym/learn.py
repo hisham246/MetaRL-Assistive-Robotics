@@ -12,7 +12,7 @@ def setup_config(env, algo, coop=False, seed=0, extra_configs={}):
         config = ppo.DEFAULT_CONFIG.copy()
         config['train_batch_size'] = 64
         config['num_sgd_iter'] = 50
-        config['sgd_minibatch_size'] = 128
+        config['sgd_minibatch_size'] = 64
         config['lambda'] = 0.95
         config['model']['fcnet_hiddens'] = [100, 100]
     elif algo == 'sac':
